@@ -1,0 +1,118 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+    <h2 style="text-align: center;font-family: 'Raleway', sans-serif;
+" class="mt-5 mb-5"><u>PDF to image and text </u></h2>
+            <div class="row mt-5">
+        <div class="col-md-6 mt-3">
+            <img src="https://www.pericent.com/wp-content/uploads/2019/08/OCR.png" id="banner" alt=""
+                 style="width: 500px">
+        </div>
+        <div class="col-md-6 mt-5">
+            <div class="card p-4 hoverable">
+                <div class="card-header" style="background: rgba(252, 200, 0, 1);">
+                    <h5 style=" text-align: center;font-weight: bold;font-family:
+                     'Raleway', sans-serif;" id="title">Upload PDF below</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="buttons">
+                            {% csrf_token %}
+                            <button class="btn btn-indigo"><input type="file" id="image" name="file" /></button>
+                            <button class="btn btn-indigo" id="process" type="submit">Test <i class="fas fa-cloud-upload-alt"></i>
+                            </button>
+                        </div>
+
+                        <div class="loader ml-5" style="display: none;">
+                            <div class="spinner-grow text-primary" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                            <div class="spinner-grow text-secondary" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                            <div class="spinner-grow text-success" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                            <div class="spinner-grow text-danger" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                            <div class="spinner-grow text-warning" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                            <div class="spinner-grow text-info" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                            <div class="spinner-grow text-primary" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                            <div class="spinner-grow text-secondary" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                        </div>
+
+                        <div class="result" style="display: none;margin-left: 10%">
+                            <p style="font-weight: bold;font-size: 24px;color: #3f51b5;" id="disease"></p>
+                            <p style="font-weight: bold;font-size: 24px;color: #3f51b5;" id="accuracy"></p>
+                            <p>
+                                <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
+                                   aria-controls="collapseExample">
+                                    View Graph <i class="fas fa-angle-down"></i>
+                                </a>
+                                <a href="/" class="ml-5">
+                                    Try again <i class="fas fa-sync"></i>
+                                </a>
+                            </p>
+                            <div class="collapse" id="collapseExample">
+                                <div class="card card-body">
+                                    <img id="graph" style="width: 350px">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block js %}
+<script>
+// $(document).ready(() => {
+//         $("input[id='image']").on('change', function (event) {
+//             let input = this;
+//             var reader = new FileReader();
+//             reader.onload = function (e) {
+//                 $('#banner').css('width', '350px')
+//                 $('#banner').addClass('img-thumbnail')
+//                 $('#banner').attr('src', e.target.result);
+//             }
+//             reader.readAsDataURL(input.files[0]);
+//         })
+
+//         $('#process').click(() => {
+//             $('.buttons').hide()
+//             $('.loader').show()
+//             $('#title').html("Processing...")
+//             let pdf = $('#image').val()
+//             // var data = image['name'];
+//             console.log("what is the value of pdf ", pdf)
+//             // console.log(data)
+//             $.ajax({
+//                 url: "{% url 'PDF' %}",
+//                 type: "GET",
+//                 data: {
+//                     "pdf": pdf,
+//                 },
+//                 success: function (data) {
+//                     console.log('in success the data is = ', data)
+//                 },
+               
+//             })
+//         })
+//     })
+// </script>
+{% endblock js %}
